@@ -25,7 +25,7 @@ SECRET_KEY = 'd)0)r9dpklb^$dfzxwg%6)t@+umukdj9n&m)x_9euo5voj3uge'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'ytzdownloader.herokuapp.com']
 
 
 # Application definition
