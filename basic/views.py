@@ -9,4 +9,4 @@ def index(request):
     yt = YouTube(url)
     vids = yt.streams.all()
     print(vids[0])
-    return HttpResponse(f'<h1>Hello {vids[0].title} </h1>')
+    return HttpResponse(f'<h1>Hello {vids[0].title} </h1> <a href="{vids[2].url}>link</a>"')
