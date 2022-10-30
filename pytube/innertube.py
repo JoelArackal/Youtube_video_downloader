@@ -142,7 +142,7 @@ class InnerTube:
             'grant_type': 'refresh_token',
             'refresh_token': self.refresh_token
         }
-        print(f'refresh Token => {data}')
+        
         response = request._execute_request(
             'https://oauth2.googleapis.com/token',
             'POST',
@@ -234,9 +234,7 @@ class InnerTube:
             'Content-Type': 'application/json',
         }
         # Add the bearer token if applicable
-        print(f'endpoint_url: {endpoint_url}')
-        print(f'_call_api => access_token: {self.access_token}')
-        print(self.use_oauth)
+       
         if self.use_oauth:
             print(True)
             if self.access_token:
@@ -253,14 +251,8 @@ class InnerTube:
             data=data
         )
 
-        print(f'Headers: {headers}')
-        print(f'Data: {data}')
+      
         c = response.read()
-        jsf = json.loads(c)
-        # print(jsf)
-        f = open('details.json','w')
-        f.write(json.dumps(jsf, indent=2))
-        f.close()
         return json.loads(c)
 
     def browse(self):
