@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view
 # Create your views here.
 
 
-def index(request):
+def index(request, urls=None):
     if request.GET.get('url', None):
         url = request.GET['url']
         print(url)
@@ -16,7 +16,7 @@ def index(request):
         y_url = vids[2].url
         return render(request, 'videos.html',{'url': y_url}) 
     # return HttpResponse(f'<h1>Hello {vids[0].title} </h1> <a href="{vids[2].url}">link</a>')
-    return render(request, 'index.html')
+    return render(request, 'build/index.html')
 
 
 def Search_Results(request):
