@@ -1,5 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from pytube import YouTube, Search
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 
 # Create your views here.
 
@@ -30,6 +32,21 @@ def Search_Results(request):
         data.append(item)
 
     return render(request, 'search_results.html', {'videos': data})
+
+@api_view(['GET'])
+def VideoAPI(request):
+    if request.GET.get('url', None):
+        url = request.GET['url']
+        print(url)
+        yt = YouTube(url)
+        vids = yt.streams.all()
+        print(yt.title)
+        print(vids[0])
+        y_url = vids[2].url
+        return Response({'url': y_url, 'title': yt.title})
+
+    return Response({'error': 'Invalid query'})
+    
 
     
 

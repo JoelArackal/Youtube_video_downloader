@@ -23,6 +23,7 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('',include('basic.urls')),
+    path('api/',include('basic.urls')),
     path('admin/', admin.site.urls),
 
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),

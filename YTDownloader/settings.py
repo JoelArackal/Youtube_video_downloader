@@ -27,7 +27,7 @@ SECRET_KEY = 'd)0)r9dpklb^$dfzxwg%6)t@+umukdj9n&m)x_9euo5voj3uge'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'ytzdownloader.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'ytzdownloader.herokuapp.com']
 
 
 # Application definition
@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'basic',
-    'pytube'
+    'pytube',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +50,7 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -123,7 +126,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    # 'static',
-    os.path.join(BASE_DIR, 'static')
-]
+# STATICFILES_DIRS = [
+#     # 'static',
+#     os.path.join(BASE_DIR, 'static')
+# ]
+
+CORS_ORIGIN_ALLOW_ALL = True
