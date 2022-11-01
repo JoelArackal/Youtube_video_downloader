@@ -14,7 +14,7 @@ def index(request, urls=None):
         vids = yt.streams.all()
         print(vids[0])
         y_url = vids[2].url
-        return render(request, 'videos.html',{'url': y_url}) 
+        return render(request, 'build/index.html') 
     # return HttpResponse(f'<h1>Hello {vids[0].title} </h1> <a href="{vids[2].url}">link</a>')
     return render(request, 'build/index.html')
 
