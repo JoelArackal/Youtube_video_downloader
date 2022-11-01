@@ -39,11 +39,15 @@ def VideoAPI(request):
         url = request.GET['url']
         print(url)
         yt = YouTube(url)
-        vids = yt.streams.all()
+        vids = yt.streams
         print(yt.title)
-        print(vids[0])
-        y_url = vids[2].url
-        return Response({'url': y_url, 'title': yt.title})
+        # print(yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc()[0].url)
+        y_url = vids.filter(progressive=True, file_extension='mp4').order_by('resolution').desc()[0].url
+        aud = vids.filter(only_audio=True).order_by('abr').desc()[0].url
+        data = {'url': y_url, 
+        'title': yt.title,
+        'audio': aud}
+        return Response(data)
 
     return Response({'error': 'Invalid query'})
     
